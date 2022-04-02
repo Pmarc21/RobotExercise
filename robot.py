@@ -77,23 +77,22 @@ if __name__ == "__main__":
     f = 'NORTH'
     placed = 0
     function_execute = read_file()
-    for x in range(0,len(function_execute)):
-        print(function_execute[x])
+    for j in range(0,len(function_execute)):
         if placed == 1: #only if we have placed robot first, we can execute different functions
-            if 'PLACE' in function_execute[x]:
-                x,y,f,inside = place(function_execute[x])
+            if 'PLACE' in function_execute[j]:
+                x,y,f,inside = place(function_execute[j])
                 placed = inside
-            elif function_execute[x] == 'REPORT':
+            elif function_execute[j] == 'REPORT':
                 report()
-            elif function_execute[x] == 'MOVE':
+            elif function_execute[j] == 'MOVE':
                 x,y,f = move(x,y,f)
-            elif function_execute[x] == 'LEFT':
+            elif function_execute[j] == 'LEFT':
                 f = left(f)
-            elif function_execute[x] == 'RIGHT':
+            elif function_execute[j] == 'RIGHT':
                 f = right(f)
         else: #if robot is not placed, we can only execute PLACE and REPORT
-            if 'PLACE' in function_execute[x]:
-                x,y,f,inside = place(function_execute[x])
+            if 'PLACE' in function_execute[j]:
+                x,y,f,inside = place(function_execute[j])
                 placed = inside
-            elif function_execute[x] == 'REPORT':
+            elif function_execute[j] == 'REPORT':
                 print('Not in place')
