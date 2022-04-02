@@ -1,5 +1,4 @@
 # robot.py
-
 MAX_X = 4
 MAX_Y = 4
 MIN_X = 0
@@ -8,6 +7,7 @@ DIRECTIONS = ['NORTH', 'SOUTH', 'EAST', 'WEST']
 
 def place(phrase):
     inside = 0 #we assume that every time robot is outside of the table
+    phrase = str(phrase)
     function_execute_splitted = phrase.split(' ')
     position = function_execute_splitted[1].split(',')
     if int(position[0]) <= MAX_X and int(position[0]) >= MIN_X and int(position[1]) <= MAX_Y and int(position[1]) >= MIN_Y and position[2] in DIRECTIONS:
@@ -17,6 +17,7 @@ def place(phrase):
 
 def report():
     print(str(x)+','+str(y)+','+f)
+
 
 def move(x,y,f):
     if f == 'NORTH' and y < MAX_Y:
@@ -58,32 +59,23 @@ def right(f):
     return f
 
 
+def read_file():
+    data = []
+    try:
+        testFile = open('test_data_1.txt', 'r')
+        lines = testFile.readlines()
+        for line in lines:
+            data.append(line.strip('\n'))
+        return data
+    except IOError:
+        print('There was an error opening the file!')
+        return
+
 if __name__ == "__main__":
     x = 0
     y = 0
     f = 'NORTH'
     placed = 0
-<<<<<<< Updated upstream
-    while True:
-        function_execute = input()
-        if placed == 1: #only if we have placed robot first, we can execute different functions
-            if 'PLACE' in function_execute:
-                x,y,f,inside = place(function_execute)
-                placed = inside
-            elif function_execute == 'REPORT':
-                report()
-            elif function_execute == 'MOVE':
-                x,y,f = move(x,y,f)
-            elif function_execute == 'LEFT':
-                f = left(f)
-            elif function_execute == 'RIGHT':
-                f = right(f)
-        else: #if robot is not placed, we can only execute PLACE and REPORT
-            if 'PLACE' in function_execute:
-                x,y,f,inside = place(function_execute)
-                placed = inside
-            elif function_execute == 'REPORT':
-=======
     function_execute = read_file()
     for j in range(0,len(function_execute)):
         if placed == 1: #only if we have placed robot first, we can execute different functions
@@ -103,5 +95,4 @@ if __name__ == "__main__":
                 x,y,f,inside = place(function_execute[j])
                 placed = inside
             elif function_execute[j] == 'REPORT':
->>>>>>> Stashed changes
                 print('Not in place')
