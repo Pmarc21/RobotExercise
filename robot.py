@@ -1,5 +1,5 @@
 # robot.py
-github
+
 MAX_X = 4
 MAX_Y = 4
 MIN_X = 0
