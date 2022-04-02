@@ -63,6 +63,7 @@ if __name__ == "__main__":
     y = 0
     f = 'NORTH'
     placed = 0
+<<<<<<< Updated upstream
     while True:
         function_execute = input()
         if placed == 1: #only if we have placed robot first, we can execute different functions
@@ -82,4 +83,25 @@ if __name__ == "__main__":
                 x,y,f,inside = place(function_execute)
                 placed = inside
             elif function_execute == 'REPORT':
+=======
+    function_execute = read_file()
+    for j in range(0,len(function_execute)):
+        if placed == 1: #only if we have placed robot first, we can execute different functions
+            if 'PLACE' in function_execute[j]:
+                x,y,f,inside = place(function_execute[j])
+                placed = inside
+            elif function_execute[j] == 'REPORT':
+                report()
+            elif function_execute[j] == 'MOVE':
+                x,y,f = move(x,y,f)
+            elif function_execute[j] == 'LEFT':
+                f = left(f)
+            elif function_execute[j] == 'RIGHT':
+                f = right(f)
+        else: #if robot is not placed, we can only execute PLACE and REPORT
+            if 'PLACE' in function_execute[j]:
+                x,y,f,inside = place(function_execute[j])
+                placed = inside
+            elif function_execute[j] == 'REPORT':
+>>>>>>> Stashed changes
                 print('Not in place')
