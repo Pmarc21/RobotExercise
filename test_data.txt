@@ -114,3 +114,5 @@ KILL
 REPORT
 
 expected result: 'not in place', commands will be ignored, no errors will show
+
+exit
